@@ -1,7 +1,7 @@
 ---
 title: API Design Bundle
 tags: [bundle, api-design]
-summary: Bundle for designing a public API: predictability over cleverness, validation pushed into construction, and documentation made executable.
+summary: "Bundle for designing a public API: predictability over cleverness, validation pushed into construction, and documentation made executable."
 source_trigger: "Designing a public API"
 bundles: [Predictable APIs, Checked Constructors and Builders, Documentation as Truth]
 ---

@@ -1,7 +1,7 @@
 ---
 title: Module Design Bundle
 tags: [bundle, architecture]
-summary: Bundle for designing a new module or crate: workspace shape, core principles, layout, and the type-system mindset that pushes correctness left.
+summary: "Bundle for designing a new module or crate: workspace shape, core principles, layout, and the type-system mindset that pushes correctness left."
 source_trigger: "Designing a new module or crate"
 bundles: [Workspace Architecture MOC, Core Principles, Workspace Layout, Type System as Design Tool, Push Correctness Left]
 ---

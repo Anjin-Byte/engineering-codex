@@ -1,7 +1,7 @@
 ---
 title: Push Correctness Left
 tags: [rust, principle, foundational]
-summary: The meta-principle behind every Rust practice: encode constraints into types, construction, and APIs so fewer bugs survive to runtime.
+summary: "The meta-principle behind every Rust practice: encode constraints into types, construction, and APIs so fewer bugs survive to runtime."
 keywords: [shift left, fail fast, compile time checks, type level enforcement, parse don't validate, design by contract]
 ---
 

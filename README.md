@@ -1,7 +1,7 @@
 ---
 title: Engineering Codex
 tags: [index, vault-root]
-summary: Engineering standards for Rust projects: language-agnostic philosophy, Rust-specific code idioms, and Cargo workspace architecture.
+summary: "Engineering standards for Rust projects: language-agnostic philosophy, Rust-specific code idioms, and Cargo workspace architecture."
 ---
 
 *A three-section vault — philosophy, Rust practices, architecture — covering how to reason, code, and shape a workspace toward long-term reliability.*

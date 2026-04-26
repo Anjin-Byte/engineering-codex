@@ -1,7 +1,7 @@
 ---
 title: Code Review Bundle
 tags: [bundle, code-review]
-summary: Pre-bundled review checks: Rust practices checklist plus the testing principles that decide whether a diff is genuinely defended.
+summary: "Pre-bundled review checks: Rust practices checklist plus the testing principles that decide whether a diff is genuinely defended."
 source_trigger: "Reviewing a PR or diff"
 bundles: [Rust Practices Checklist, Tests Should Make Programs Fail, Sharp Oracles, Regression Discipline]
 ---

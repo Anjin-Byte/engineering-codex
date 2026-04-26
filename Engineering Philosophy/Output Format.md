@@ -1,7 +1,7 @@
 ---
 title: Output Format
 tags: [philosophy, output, template]
-summary: Four-section deliverable template: correctness model, invariants, design, test strategy — each catches a class of failure the others miss.
+summary: "Four-section deliverable template: correctness model, invariants, design, test strategy — each catches a class of failure the others miss."
 keywords: [design document, writeup structure, deliverable shape, specification, planning template, communication format]
 ---
 

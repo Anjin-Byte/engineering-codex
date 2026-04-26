@@ -1,7 +1,7 @@
 ---
 title: Edge Cases and Properties
 tags: [rust, testing, principle]
-summary: Test the inputs where humans improvise badly: empties, boundaries, overflows; pair example tests with property-based ones.
+summary: "Test the inputs where humans improvise badly: empties, boundaries, overflows; pair example tests with property-based ones."
 keywords: [proptest, quickcheck, fuzzing, off by one, boundary values, invariants, randomized inputs]
 ---
 

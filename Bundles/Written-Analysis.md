@@ -1,7 +1,7 @@
 ---
 title: Written Analysis Bundle
 tags: [bundle, writing, design-doc]
-summary: Bundle for producing a written analysis or design doc: the four-section format and the principles that make reasoning legible, explicit, and human-first.
+summary: "Bundle for producing a written analysis or design doc: the four-section format and the principles that make reasoning legible, explicit, and human-first."
 source_trigger: "Producing a written analysis or design doc"
 bundles: [Output Format, Reason About Correctness, Reasoning Beside Code, Explicit Not Magical, Human Understanding First]
 ---

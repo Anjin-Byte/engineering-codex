@@ -1,7 +1,7 @@
 ---
 title: Test Design Bundle
 tags: [bundle, testing]
-summary: Bundle for authoring tests: three test levels, edge and property tactics, design-for-testability, sharp oracles, and the adversarial posture.
+summary: "Bundle for authoring tests: three test levels, edge and property tactics, design-for-testability, sharp oracles, and the adversarial posture."
 source_trigger: "Writing tests"
 bundles: [Three Levels of Tests, Edge Cases and Properties, Tests Without Heroics, Sharp Oracles, Normal Usage Is Not Testing]
 ---

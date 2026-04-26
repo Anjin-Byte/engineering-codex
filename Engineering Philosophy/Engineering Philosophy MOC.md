@@ -1,7 +1,7 @@
 ---
 title: Engineering Philosophy MOC
 tags: [moc, philosophy]
-summary: Map of content for the Knuth-style engineering principles: how to reason, design, and adversarially test software in any language.
+summary: "Map of content for the Knuth-style engineering principles: how to reason, design, and adversarially test software in any language."
 keywords: [navigation hub, table of contents, principles index, mental models, software craftsmanship, methodology]
 ---
 

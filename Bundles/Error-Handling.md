@@ -1,7 +1,7 @@
 ---
 title: Error Handling Bundle
 tags: [bundle, error-handling]
-summary: Bundle for handling errors: when to use Result vs panic, and how typed enum errors live at library boundaries while anyhow stays at the application edge.
+summary: "Bundle for handling errors: when to use Result vs panic, and how typed enum errors live at library boundaries while anyhow stays at the application edge."
 source_trigger: "Handling errors"
 bundles: [Result vs Panic, Domain Errors at Boundaries]
 ---

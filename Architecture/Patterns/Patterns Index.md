@@ -1,7 +1,7 @@
 ---
 title: Patterns Index
 tags: [index, patterns]
-summary: Index of cross-cutting workspace patterns: each entry is a rule with its rationale.
+summary: "Index of cross-cutting workspace patterns: each entry is a rule with its rationale."
 keywords: [table of contents, navigation, design rules, architectural decisions, catalog, recurring solutions]
 ---
 

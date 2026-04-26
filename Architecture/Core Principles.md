@@ -1,7 +1,7 @@
 ---
 title: Core Principles
 tags: [architecture, principles]
-summary: Four load-bearing rules that drive workspace decisions: pure core, narrow adapters, isolated UI, root-owned configuration.
+summary: "Four load-bearing rules that drive workspace decisions: pure core, narrow adapters, isolated UI, root-owned configuration."
 keywords: [hexagonal architecture, ports and adapters, separation of concerns, dependency direction, layering, design smells]
 ---
 

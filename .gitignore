@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Obsidian — ignore per-machine workspace state, keep shared config
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/*/data.json
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local notes / scratch
+.scratch/
+TODO.local.md

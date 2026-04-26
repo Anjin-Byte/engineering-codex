@@ -14,7 +14,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) with
 -
 
 ### Changed
--
+- [CONTRIBUTING.md](./CONTRIBUTING.md) §6 makes the no-contributor-disclosure rule explicit; §10.2 bans `Co-Authored-By:` trailers and similar commit metadata; §11.3 clarifies that changelog entries describe *what changed*, never *who changed it*.
 
 ### Removed
 -

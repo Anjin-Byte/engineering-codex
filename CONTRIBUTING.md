@@ -139,6 +139,7 @@ The vault is direct. Knuth-direct. Match the existing tone:
 - **Worked examples earn their space.** A code block must illustrate something the prose alone cannot. If the prose already conveys it, drop the code.
 - **No emoji, no decorative formatting.** Tables and pull-quotes when they sharpen, not when they decorate.
 - **Footnotes and citations sparingly.** If a source is load-bearing (Knuth, an RFC, a paper), name it inline.
+- **No contributor disclosure, ever.** Vault content must not name any individual or agent contributor — no author bylines, acknowledgements, "written by" / "drafted with" notices, AI-disclosure language, or `author:` frontmatter fields. The vault is authorless engineering standards; its authority is the content, not the source. This rule extends to commit messages (§10.2), changelog entries (§11.4), and the CHANGELOG release-cutting checklist (§11.3).
 
 ---
 
@@ -231,6 +232,7 @@ The vault lives in a GitHub repository. Contributions land through pull requests
 - Imperative mood, ≤ 72-char subject line: `add: Sharp Oracles note` / `fix: broken wikilink in Test-Design bundle` / `docs: clarify versioning policy in CONTRIBUTING`.
 - Body (when needed) explains *why*, not what. The diff shows what.
 - If a commit closes a tracked vault issue, reference the issue file path: `Resolves Issues/2026-04-26-sharp-oracles-missing-property-test-case.md`.
+- **No contributor disclosure in commit metadata** (per §6). Do not add `Co-Authored-By:` trailers, `Signed-off-by:` lines that reveal personal identity beyond what git already records, or "with help from"-style mentions in commit bodies. The git author field will exist as a mechanical record; nothing in the message should add to it.
 
 ### 10.3 Pull request mapping
 
@@ -305,7 +307,7 @@ Until `v1.0.0`, MINOR releases may include breaking changes. Consumers should pi
 
 1. Open a release PR titled `release: v0.X.0`.
 2. In the PR, move the `## [Unreleased]` block in [[CHANGELOG]] under a new `## [0.X.0] — YYYY-MM-DD` heading. Reset the Unreleased section to empty category headings.
-3. Confirm every entry in the new release block is accurate, attributed where relevant, and links to the file or issue it concerns.
+3. Confirm every entry in the new release block is accurate and links to the file or issue it concerns. Entries describe *what changed*, never *who changed it* (per §6).
 4. Merge the PR.
 5. Tag `main` at the merge commit: `git tag -a v0.X.0 -m "v0.X.0"` and push the tag.
 6. Optionally create a GitHub Release pointing at the tag, with the changelog block as the body.

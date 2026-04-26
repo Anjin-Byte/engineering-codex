@@ -10,6 +10,14 @@ summary: "Engineering standards for Rust projects: language-agnostic philosophy,
 
 A general-purpose set of engineering standards for any Rust project. The philosophy section is language-agnostic and applies anywhere; the workspace-architecture and Rust-practices sections target Rust workspaces specifically.
 
+## Repository format
+
+This repository **is an [Obsidian](https://obsidian.md) vault** — clone it and open the folder as a vault to get the full experience: working `[[wikilinks]]` between notes, the graph view, tag search across frontmatter, and the folder structure used as the navigation spine. Every `.md` file uses YAML frontmatter (`title`, `tags`, `summary`, sometimes `keywords`) and Obsidian-style `[[Note Name]]` links rather than relative Markdown links.
+
+It also reads fine as a plain GitHub repo — files render as Markdown and frontmatter is shown as a table. The shared `.obsidian/` config (graph, appearance, core plugins) is committed so cloners get a sensible default; per-machine state (`workspace.json`) is gitignored.
+
+You don't need Obsidian to *use* the standards — agents and humans can read the files directly — but `[[wikilinks]]` won't be clickable on GitHub. If you want the navigation to work, use Obsidian or any editor with wikilink support.
+
 ## Start here
 
 - [[Engineering Philosophy MOC]] — how to reason about correctness and attack programs with adversarial tests (language-agnostic)

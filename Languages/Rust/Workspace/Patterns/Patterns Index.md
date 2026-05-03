@@ -1,29 +1,30 @@
 ---
 title: Patterns Index
-tags: [index, patterns]
-summary: "Index of cross-cutting workspace patterns: each entry is a rule with its rationale."
-keywords: [table of contents, navigation, design rules, architectural decisions, catalog, recurring solutions]
+tags: [index, patterns, cargo]
+summary: "Index of Cargo workspace patterns: each entry shows how a universal architectural principle is realized in a Cargo workspace."
+keywords: [table of contents, navigation, cargo wiring, design rules, architectural decisions, catalog]
 ---
 
-*A flat list of recurring architectural patterns the workspace follows, each pairing a hard rule with the reasoning behind it.*
+*A flat list of recurring Cargo workspace patterns; each is a Cargo expression of a universal architectural principle.*
 
 # Patterns Index
 
-Cross-cutting design patterns the workspace follows. Each one is a rule with a rationale.
+Cargo workspace patterns. Each entry pairs a Cargo-specific rule with the universal principle it expresses.
 
-## Architectural rules
+## Architectural patterns (Cargo expressions of universal principles)
 
-- [[Headless First]] — library-first; binaries and UIs are thin
-- [[CPU Reference Path]] — every optimized algorithm has a reference oracle
-- [[Binary Strategy]] — one binary vs. several
+- [[Languages/Rust/Workspace/Patterns/Headless First Cargo Wiring]] — separate binary crates or feature-gated UI; expresses [[Engineering Philosophy/Principles/Headless First]]
+- [[Languages/Rust/Workspace/Patterns/Reference Path Cargo Wiring]] — core crate vs optimized adapter crate; expresses [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]
+- [[Languages/Rust/Workspace/Patterns/Cargo Binary Strategy]] — sibling binary crates vs feature-gated binary; expresses [[Engineering Philosophy/Principles/One Binary or Many]]
+- [[Languages/Rust/Workspace/Patterns/Cargo Feature Gating]] — additive features representing real capabilities; expresses [[Engineering Philosophy/Principles/Capability Slices vs Implementation Switches]]
 
-## Cargo / build
+## Cargo / build mechanics
 
-- [[Feature Gating]] — features represent real capability slices
-- [[Shared Dependencies]] — what belongs in `[workspace.dependencies]`
-- [[Workspace Lints and Profiles]] — root-only configuration
+- [[Languages/Rust/Workspace/Patterns/Shared Dependencies]] — what belongs in `[workspace.dependencies]`
+- [[Languages/Rust/Workspace/Patterns/Workspace Lints and Profiles]] — root-only configuration
 
 ## Related
 
-- [[Workspace Architecture MOC]]
-- [[Core Principles]]
+- [[Languages/Rust/Workspace/Workspace Architecture MOC]]
+- [[Languages/Rust/Workspace/Core Principles]]
+- [[Engineering Philosophy/Principles/Architectural Core Principles]]

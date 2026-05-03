@@ -90,7 +90,7 @@ proptest! {
 ```
 
 Properties worth looking for:
-- Optimized result ≈ reference result within tolerance (see [[CPU Reference Path]])
+- Optimized result ≈ reference result within tolerance (see [[Engineering Philosophy/Principles/Reference Implementation as Oracle]])
 - Serialization round-trips
 - Idempotent transformations
 - Invariants preserved by every operation on a type
@@ -108,4 +108,4 @@ The goal is tests that catch real defects without rotting on every change. Test 
 - [[Three Levels of Tests]]
 - [[Tests Without Heroics]]
 - [[Make Invalid States Unrepresentable]]
-- [[CPU Reference Path]]
+- [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]

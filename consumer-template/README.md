@@ -16,7 +16,7 @@ The vault is general — it makes no project-specific assumptions. Each consumin
 
 Two things:
 1. The vault location must be reachable from the project (filesystem path).
-2. The project's own `CLAUDE.md` (or equivalent) must point agents at the vault's `AGENTS.md`.
+2. The project's own `CLAUDE.md` (or equivalent) must point agents at the vault's root `AGENTS.md`, which is a router. The router will direct the agent to load the per-scope AGENTS files that match the project's languages — universal philosophy plus the relevant language scope(s). An agent on a Rust-only project never loads TypeScript content, and vice versa.
 
 ## Integration paths
 

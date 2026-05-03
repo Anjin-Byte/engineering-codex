@@ -14,7 +14,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) with
 -
 
 ### Changed
-- [CONTRIBUTING.md](./CONTRIBUTING.md) §6 makes the no-contributor-disclosure rule explicit; §10.2 bans `Co-Authored-By:` trailers and similar commit metadata; §11.3 clarifies that changelog entries describe *what changed*, never *who changed it*.
+-
 
 ### Removed
 -
@@ -24,6 +24,53 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) with
 
 ### Issues Resolved
 -
+
+---
+
+## [1.0.0] — 2026-05-03
+
+The multilingual restructure. The vault now separates universal philosophy from per-language disciplines, so an agent on a Rust-only project never loads context for a language it does not need (and vice versa once additional languages land). This is a **major version bump with breaking changes** — every wikilink, MOC reference, and consumer-template path that pointed at `Rust Practices/`, `Architecture/`, or flat `Bundles/<task>.md` is gone.
+
+The full design log lives outside the vault at [`reference_reports_not_apart_of_vault/restructure_plan.md`](./reference_reports_not_apart_of_vault/restructure_plan.md); the executable phase plan lived at the agent's plan file during execution.
+
+### Added
+
+- **`Languages/<lang>/` scope axis.** Top-level `Languages/Rust/Practices/` and `Languages/Rust/Workspace/` host all Rust-specific content. Future language scopes (TypeScript, etc.) slot in as `Languages/<lang>/` siblings.
+- **`Integration/Rust-WASM-TS/AGENTS.md`** placeholder — empty scope for cross-language interop, populated in a future release.
+- **Per-scope AGENTS files.** [`Engineering Philosophy/AGENTS.md`](./Engineering%20Philosophy/AGENTS.md) holds universal triggers; [`Languages/Rust/AGENTS.md`](./Languages/Rust/AGENTS.md) holds Rust triggers. The root [`AGENTS.md`](./AGENTS.md) is now a thin router (~2 KB) that selects which deeper AGENTS files to load by scope.
+- **Five lifted universal architectural principles** under `Engineering Philosophy/Principles/`: [[Engineering Philosophy/Principles/Architectural Core Principles]], [[Engineering Philosophy/Principles/Headless First]], [[Engineering Philosophy/Principles/Reference Implementation as Oracle]], [[Engineering Philosophy/Principles/One Binary or Many]], [[Engineering Philosophy/Principles/Capability Slices vs Implementation Switches]]. These travel to any language.
+- **Four Cargo-application patterns** under `Languages/Rust/Workspace/Patterns/`: Headless First Cargo Wiring, Reference Path Cargo Wiring, Cargo Binary Strategy, Cargo Feature Gating. Each is the Rust expression of its universal principle.
+- **`Bundles/Universal/` and `Bundles/Rust/`.** Bundles are now scoped per language, so loading a bundle only ever costs in-scope context.
+- **CONTRIBUTING.md generalization-test extension** — a language-scope dimension now decides whether a lesson belongs under `Engineering Philosophy/` or under a per-language scope.
+- **AUDIT.md scope-aware checks** — orphan, structural-integrity, bundle-freshness, folder-fit, and trigger-group checks now operate across multiple AGENTS files and per-language MOCs.
+
+### Changed
+
+- **`Rust Practices/` → `Languages/Rust/Practices/`** (24 notes; subtree moved via `git mv`).
+- **`Architecture/` → `Languages/Rust/Workspace/`** (7 notes moved; 4 patterns lifted out — see below).
+- **Bundles split per scope:** `Bundles/Code-Review.md` → `Bundles/Rust/Code-Review.md`, similarly for Test-Design, Module-Design, Error-Handling, API-Design; `Bundles/Written-Analysis.md` → `Bundles/Universal/Written-Analysis.md`.
+- **Root `AGENTS.md`** rewritten as a router (no per-language triggers; scope-detection guidance + vault-meta triggers only).
+- **[`README.md`](./README.md), [`CLAUDE.md`](./CLAUDE.md), [`CONTRIBUTING.md`](./CONTRIBUTING.md), [`AUDIT.md`](./AUDIT.md), [`ISSUES.md`](./ISSUES.md), [`.github/pull_request_template.md`](./.github/pull_request_template.md), [`consumer-template/README.md`](./consumer-template/README.md), [`consumer-template/CLAUDE.md`](./consumer-template/CLAUDE.md)** — all references and folder taxonomies updated for the new structure.
+- **Languages/Rust/Workspace/Core Principles.md** is now a thin Cargo-application note pointing at the universal [[Engineering Philosophy/Principles/Architectural Core Principles]]; the four universal rules moved to philosophy.
+- **CONTRIBUTING.md §5** documents the meta-file exception: bare `[[AGENTS]]` / `[[README]]` / `[[CLAUDE]]` resolves to the vault-root copy; non-root copies must be path-qualified.
+- **CONTRIBUTING.md §6 / §10.2 / §11.3** make the no-contributor-disclosure rule explicit and ban `Co-Authored-By:` trailers in commit metadata. (Originally entered in `[Unreleased]` ahead of this release; merged into 1.0.0.)
+
+### Removed
+
+- **`Architecture/` folder entirely.** All contents either moved under `Languages/Rust/Workspace/` or lifted into `Engineering Philosophy/Principles/`.
+- **The four pattern notes at `Architecture/Patterns/`** (Headless First, CPU Reference Path, Binary Strategy, Feature Gating) are deleted as files. Their content now lives across one universal note plus one Cargo-application note per pattern (except Feature Gating's universal lift, where the Cargo expression has its own note: Cargo Feature Gating).
+
+### Breaking
+
+This release breaks every wikilink and consumer-template path that referenced the old layout:
+
+- `[[Rust Practices/...]]` → `[[Languages/Rust/Practices/...]]` (or bare-name; filenames remain vault-unique)
+- `[[Architecture/...]]` → `[[Languages/Rust/Workspace/...]]` for moved notes; lifted notes use new names (CPU Reference Path → Reference Implementation as Oracle, Binary Strategy → One Binary or Many, Feature Gating → Capability Slices vs Implementation Switches; "Headless First" keeps its name but moves to `Engineering Philosophy/Principles/`).
+- `[[Bundles/<task>]]` → `[[Bundles/Rust/<task>]]` or `[[Bundles/Universal/<task>]]`.
+- The single root `AGENTS.md` is now a router; agents that hard-coded reading just the root file should additionally read the per-scope AGENTS files.
+- Consumer-template snippets updated to reference the per-scope AGENTS pattern.
+
+Pre-1.0 consumers should pin to a `v0.x` tag if they need stability against this change.
 
 ---
 
@@ -48,4 +95,5 @@ This initial release was assembled by generalizing lessons drawn from prior proj
 ---
 
 [Unreleased]: ./
+[1.0.0]: ./
 [0.1.0]: ./

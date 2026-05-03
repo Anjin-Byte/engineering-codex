@@ -34,9 +34,9 @@ Entry point for understanding **why** a Rust workspace is shaped a particular wa
 ### Patterns
 
 - [[Headless First]] — library-first; binaries are thin
-- [[CPU Reference Path]] — keep a reference implementation alongside any optimized one
-- [[Binary Strategy]] — one binary vs. several
-- [[Feature Gating]] — when to use Cargo features
+- [[Engineering Philosophy/Principles/Reference Implementation as Oracle]] — keep a reference implementation alongside any optimized one
+- [[Languages/Rust/Workspace/Patterns/Cargo Binary Strategy]] — one binary vs. several
+- [[Languages/Rust/Workspace/Patterns/Cargo Feature Gating]] — when to use Cargo features
 - [[Shared Dependencies]] — what belongs in `workspace.dependencies`
 - [[Workspace Lints and Profiles]] — root-only configuration
 
@@ -50,7 +50,7 @@ Entry point for understanding **why** a Rust workspace is shaped a particular wa
 6. Crates reflect responsibilities, not aesthetics.
 7. For any optimized implementation, keep a reference implementation as oracle.
 
-*Source: [[Architecture/Workspace Architecture MOC]]*
+*Source: [[Languages/Rust/Workspace/Workspace Architecture MOC]]*
 
 ---
 
@@ -105,9 +105,9 @@ Workspace consequence:
 
 This saves you from the classic optimization debugging experience: *"it is very fast and very wrong."*
 
-See: [[CPU Reference Path]]
+See: [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]
 
-*Source: [[Architecture/Core Principles]]*
+*Source: [[Engineering Philosophy/Principles/Architectural Core Principles]] (universal); applied to Cargo at [[Languages/Rust/Workspace/Core Principles]]*
 
 ---
 
@@ -168,7 +168,7 @@ project_root
 └── tools/automation
 ```
 
-Establish the domain model, types, and reference algorithms with no external dependencies. The core can be tested anywhere, and serves as the oracle for any future optimized implementation. See [[Push Correctness Left]] and [[CPU Reference Path]].
+Establish the domain model, types, and reference algorithms with no external dependencies. The core can be tested anywhere, and serves as the oracle for any future optimized implementation. See [[Push Correctness Left]] and [[Engineering Philosophy/Principles/Reference Implementation as Oracle]].
 
 #### Phase 2 — add adapters and a binary
 
@@ -186,7 +186,7 @@ At this point the system is shippable as a binary.
 
 Add a UI crate only when interactive use is actually needed. See [[Headless First]].
 
-*Source: [[Architecture/Workspace Layout]]*
+*Source: [[Languages/Rust/Workspace/Workspace Layout]]*
 
 ---
 
@@ -230,7 +230,7 @@ A signal you're fighting the type system instead of using it:
 - `unsafe` blocks added to express something the type system "doesn't get."
 - Long chains of generic parameters whose only job is to stay generic.
 
-*Source: [[Rust Practices/Foundational/Type System as Design Tool]]*
+*Source: [[Languages/Rust/Practices/Foundational/Type System as Design Tool]]*
 
 ---
 
@@ -275,13 +275,13 @@ The wrong reaction to "this newtype is verbose" is to delete the newtype. The ri
 
 It is not "ban runtime checks." Some invariants can only be checked at runtime (network input, file contents, untrusted external data). For those, push the check **once**, at the boundary, and produce a validated type — then never re-check downstream. See [[State Transition Types]].
 
-*Source: [[Rust Practices/Foundational/Push Correctness Left]]*
+*Source: [[Languages/Rust/Practices/Foundational/Push Correctness Left]]*
 
 ---
 
 ## Related bundles
 
-- [[Bundles/API-Design]] — what the new module's public surface should look like
-- [[Bundles/Error-Handling]] — what errors the new module's boundary returns
-- [[Bundles/Test-Design]] — how the new module gets its test coverage without heroics
-- [[Bundles/Written-Analysis]] — the design doc that should accompany a non-trivial new module
+- [[Bundles/Rust/API-Design]] — what the new module's public surface should look like
+- [[Bundles/Rust/Error-Handling]] — what errors the new module's boundary returns
+- [[Bundles/Rust/Test-Design]] — how the new module gets its test coverage without heroics
+- [[Bundles/Universal/Written-Analysis]] — the design doc that should accompany a non-trivial new module

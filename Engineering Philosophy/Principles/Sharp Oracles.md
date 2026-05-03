@@ -58,7 +58,7 @@ Useful when the exact output depends on implementation choices but properties of
 
 ### Differential check vs. reference
 
-When you have an optimized implementation alongside a slower reference (see [[CPU Reference Path]]):
+When you have an optimized implementation alongside a slower reference (see [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]):
 
 ```rust
 let reference = core::reference::process(&input);
@@ -111,5 +111,5 @@ Document the chosen tolerance in the test and explain *why* that value. A magic 
 
 - [[Tests Should Make Programs Fail]]
 - [[Regression Discipline]]
-- [[CPU Reference Path]]
+- [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]
 - [[Edge Cases and Properties]]

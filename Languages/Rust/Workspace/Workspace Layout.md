@@ -62,7 +62,7 @@ project_root
 └── tools/automation
 ```
 
-Establish the domain model, types, and reference algorithms with no external dependencies. The core can be tested anywhere, and serves as the oracle for any future optimized implementation. See [[Push Correctness Left]] and [[CPU Reference Path]].
+Establish the domain model, types, and reference algorithms with no external dependencies. The core can be tested anywhere, and serves as the oracle for any future optimized implementation. See [[Push Correctness Left]] and [[Engineering Philosophy/Principles/Reference Implementation as Oracle]].
 
 ### Phase 2 — add adapters and a binary
 
@@ -83,5 +83,5 @@ Add a UI crate only when interactive use is actually needed. See [[Headless Firs
 ## Related
 
 - [[Core Principles]]
-- [[Binary Strategy]]
+- [[Languages/Rust/Workspace/Patterns/Cargo Binary Strategy]]
 - [[Cargo Workspace Configuration]]

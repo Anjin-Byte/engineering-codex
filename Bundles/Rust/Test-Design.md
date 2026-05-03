@@ -98,7 +98,7 @@ Use these sparingly — the whole point is that the example matches reality.
 - **Binary crates**: integration tests in `tests/` exercising the binary's argument parsing and orchestration.
 - **Cross-crate** integration tests: at the workspace root in `/tests/` for flows that span crates.
 
-*Source: [[Rust Practices/Testing/Three Levels of Tests]]*
+*Source: [[Languages/Rust/Practices/Testing/Three Levels of Tests]]*
 
 ---
 
@@ -187,7 +187,7 @@ proptest! {
 ```
 
 Properties worth looking for:
-- Optimized result ≈ reference result within tolerance (see [[CPU Reference Path]])
+- Optimized result ≈ reference result within tolerance (see [[Engineering Philosophy/Principles/Reference Implementation as Oracle]])
 - Serialization round-trips
 - Idempotent transformations
 - Invariants preserved by every operation on a type
@@ -200,7 +200,7 @@ Properties worth looking for:
 
 The goal is tests that catch real defects without rotting on every change. Test the **behavior**, not the **implementation**.
 
-*Source: [[Rust Practices/Testing/Edge Cases and Properties]]*
+*Source: [[Languages/Rust/Practices/Testing/Edge Cases and Properties]]*
 
 ---
 
@@ -244,7 +244,7 @@ Marking things `pub(crate)` "so tests can see them" is a smell. The right moves 
 
 Some integration tests genuinely need a real filesystem, a real device, or a real subprocess. That's fine — but those should be **few**, **clearly labeled** (consider a separate `tests/integration_*.rs` file or a feature gate), and not the only way the system is tested. Most tests should still be cheap.
 
-*Source: [[Rust Practices/Effect Isolation/Tests Without Heroics]]*
+*Source: [[Languages/Rust/Practices/Effect Isolation/Tests Without Heroics]]*
 
 ---
 
@@ -301,7 +301,7 @@ Useful when the exact output depends on implementation choices but properties of
 
 #### Differential check vs. reference
 
-When you have an optimized implementation alongside a slower reference (see [[CPU Reference Path]]):
+When you have an optimized implementation alongside a slower reference (see [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]):
 
 ```rust
 let reference = core::reference::process(&input);
@@ -408,6 +408,6 @@ You will not eliminate all bugs this way. But you will eliminate the **important
 
 ## Related bundles
 
-- [[Bundles/Code-Review]] — the same testing principles applied to reviewing rather than authoring
-- [[Bundles/Module-Design]] — when tests need heroics, redesign the module using this bundle
-- [[Bundles/Written-Analysis]] — for the test-strategy section of a design doc
+- [[Bundles/Rust/Code-Review]] — the same testing principles applied to reviewing rather than authoring
+- [[Bundles/Rust/Module-Design]] — when tests need heroics, redesign the module using this bundle
+- [[Bundles/Universal/Written-Analysis]] — for the test-strategy section of a design doc

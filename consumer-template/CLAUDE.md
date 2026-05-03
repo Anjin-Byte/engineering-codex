@@ -19,8 +19,8 @@ Common values:
 
 ### How agents should use it
 
-1. **Read `<PATH-TO-VAULT>/AGENTS.md` first** for any task that overlaps engineering practice — code review, test design, module/crate design, error handling, API design, refactoring, written analysis, CI/tooling. The file's "When to consult what" section maps task triggers to the relevant notes.
-2. **For high-frequency tasks, prefer the bundle** at `<PATH-TO-VAULT>/Bundles/<Task>.md` — these inline all relevant notes into one file and save round-trips.
+1. **Read `<PATH-TO-VAULT>/AGENTS.md` first** — it is a router. It detects scope and points at the relevant per-scope AGENTS files. For any engineering task: always read `<PATH-TO-VAULT>/Engineering Philosophy/AGENTS.md`. If this project uses Rust, also read `<PATH-TO-VAULT>/Languages/Rust/AGENTS.md`. If the project crosses Rust↔WASM↔TS boundaries, also read `<PATH-TO-VAULT>/Integration/Rust-WASM-TS/AGENTS.md`. Each per-scope AGENTS file's "When to consult what" section maps task triggers to the relevant notes.
+2. **For high-frequency tasks, prefer the bundle** at `<PATH-TO-VAULT>/Bundles/<scope>/<Task>.md` (e.g. `Bundles/Universal/Written-Analysis.md`, `Bundles/Rust/Code-Review.md`) — these inline all relevant notes into one file and save round-trips. Bundles are scoped per language so loading one never costs cross-scope context.
 3. **Treat the vault's rules as authoritative** by default. Deviations are allowed, but justify them explicitly when reviewing or writing code.
 4. **Do not edit notes in the vault.** If you observe a problem with an existing note during this project's work, file an issue per `<PATH-TO-VAULT>/ISSUES.md` rather than silently working around it or autonomously editing.
 5. **Do not add new notes during project work.** New general-knowledge notes go through the contribution process at `<PATH-TO-VAULT>/CONTRIBUTING.md`, separate from project tasks.

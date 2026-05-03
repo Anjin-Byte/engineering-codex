@@ -184,7 +184,7 @@ When the target note is edited to address the issue:
    - `resolved_at: <date>`
    - `resolution_commit: <short-sha-or-change-ref>`
    - Fill in `## Resolution` with: what changed, in which note(s), and how the change addresses the observation. One short paragraph is plenty.
-4. If the resolution materially changed the target note's thesis, also confirm the three consequences from [[CONTRIBUTING]] §7 (MOC entry, AGENTS.md trigger group fit, AGENTS.md full index).
+4. If the resolution materially changed the target note's thesis, also confirm the three consequences from [[CONTRIBUTING]] §7 (the scope's MOC entry, the scope's AGENTS.md trigger group fit, the scope's AGENTS.md full index).
 5. Add an entry to the `Issues Resolved` category in the `## [Unreleased]` section of [[CHANGELOG]]. Include the issue file path as a wikilink and a one-line description of what changed in which note. This step is non-optional — see [[CONTRIBUTING]] §11.5.
 
 Resolved issues stay in `Issues/`. They are the change log of the vault's refinement under real use, and reading old resolutions is a useful way to understand why a note is shaped the way it is. The `CHANGELOG` is the public-facing summary; `Issues/` is the long-form record.

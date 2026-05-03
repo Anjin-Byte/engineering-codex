@@ -84,4 +84,4 @@ Lint configuration is also centralized — see [[Workspace Lints and Profiles]].
 
 - [[Workspace Layout]]
 - [[Shared Dependencies]]
-- [[Feature Gating]]
+- [[Languages/Rust/Workspace/Patterns/Cargo Feature Gating]]

@@ -358,6 +358,6 @@ If any answer is "no," the structure is hiding the reasoning, not expressing it.
 
 ## Related bundles
 
-- [[Bundles/Module-Design]] — when the analysis is for a new module, design and writing happen together
-- [[Bundles/Test-Design]] — the test-strategy section of any design doc draws from this bundle
-- [[Bundles/Code-Review]] — design docs and review checklists share the same correctness vocabulary
+- [[Bundles/Rust/Module-Design]] — when the analysis is for a new module, design and writing happen together
+- [[Bundles/Rust/Test-Design]] — the test-strategy section of any design doc draws from this bundle
+- [[Bundles/Rust/Code-Review]] — design docs and review checklists share the same correctness vocabulary

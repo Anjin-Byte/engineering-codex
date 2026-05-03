@@ -79,7 +79,7 @@ Mixing the two roles erodes both. If `Result` is used for "this should never hap
 
 Keeping the categories sharp keeps both behaviors meaningful.
 
-*Source: [[Rust Practices/Error Handling/Result vs Panic]]*
+*Source: [[Languages/Rust/Practices/Error Handling/Result vs Panic]]*
 
 ---
 
@@ -156,12 +156,12 @@ If the bare `std::io::Error` doesn't tell the caller *which path failed*, wrap i
 
 Each crate boundary is its own opportunity for typed errors. An adapter crate's public functions return its own typed `Error` enum — they do *not* leak the underlying library's error types. A core domain crate's public functions return a domain-specific error. The application binary orchestrates these and finally collapses everything to `anyhow::Error` for the user.
 
-*Source: [[Rust Practices/Error Handling/Domain Errors at Boundaries]]*
+*Source: [[Languages/Rust/Practices/Error Handling/Domain Errors at Boundaries]]*
 
 ---
 
 ## Related bundles
 
-- [[Bundles/API-Design]] — error types are part of the public API; design them with the API in mind
-- [[Bundles/Module-Design]] — module boundaries are where typed errors live
-- [[Bundles/Code-Review]] — what to check for when error-handling code lands in a diff
+- [[Bundles/Rust/API-Design]] — error types are part of the public API; design them with the API in mind
+- [[Bundles/Rust/Module-Design]] — module boundaries are where typed errors live
+- [[Bundles/Rust/Code-Review]] — what to check for when error-handling code lands in a diff

@@ -31,13 +31,21 @@ A team learns: *"Our `OrderService` blew up because the `Postgres` connection po
 
 Strip the nouns: *"A shared mutable resource between two consumers with different lifetimes will eventually surface as a hang or corruption; give each lifetime its own instance."*
 
-That generalizes. It belongs (likely as an addition to [[Rust Practices/Ownership and Mutation/Minimize Shared Mutability]]).
+That generalizes. It belongs (likely as an addition to [[Languages/Rust/Practices/Ownership and Mutation/Minimize Shared Mutability]]).
 
 Counter-example: *"Always pin `tokio` to 1.35 because 1.36 broke our retry logic."* — useful for the project, no general lesson, doesn't belong.
 
 ### What "general" means here
 
-A note is general if it would still be true and useful for a project the author has never seen, written in a language they may not use. The Engineering Philosophy section is the gold standard — its principles travel to any language. Rust Practices and Architecture are general within their scope (Rust code, Cargo workspaces) but make no project-specific assumptions inside that scope.
+A note is general if it would still be true and useful for a project the author has never seen, written in a language they may not use. The Engineering Philosophy scope is the gold standard — its principles travel to any language. Per-language scopes (`Languages/<lang>/`) are general within their language: they assume the language but make no project-specific assumptions inside that scope.
+
+### Language-scope dimension
+
+The vault now spans multiple language disciplines. When the generalization test passes, run a second test:
+
+> If the lesson applies to ≥ 2 languages we cover, it belongs under `Engineering Philosophy/`, not under any single language scope. If it applies to one language only, it belongs under `Languages/<lang>/`.
+
+A lesson that *seems* universal but uses language-specific mechanisms (e.g. "use Cargo features for capability slicing") splits into two notes: the universal principle in `Engineering Philosophy/`, the language-specific application in `Languages/<lang>/`. Pick the level the dominant claim sits at.
 
 ---
 
@@ -101,27 +109,30 @@ summary: One sentence, ≤ 25 words, self-contained — works when the note is p
 
 | Folder | Use when… |
 |---|---|
-| `Engineering Philosophy/Principles/` | The lesson is language-agnostic — about reasoning, testing posture, or how to attack programs. Travels to any project, any language. |
+| `Engineering Philosophy/Principles/` | The lesson is language-agnostic — about reasoning, testing posture, architectural principle, or how to attack programs. Travels to any project, any language. |
 | `Engineering Philosophy/` (root) | Format and process notes that frame how output is produced (e.g. [[Engineering Philosophy/Output Format]]). |
-| `Rust Practices/Foundational/` | The lesson is a load-bearing Rust principle that touches multiple subcategories (push correctness left, predictable APIs, type system as design tool). |
-| `Rust Practices/Type-Driven Design/` | About using the type system to constrain or model — newtypes, builders, state types, making invalid states unrepresentable. |
-| `Rust Practices/Effect Isolation/` | About separating pure logic from effects — pure cores, traits as seams, testability without heroics. |
-| `Rust Practices/Error Handling/` | About `Result`, panics, error types, error boundaries. |
-| `Rust Practices/Ownership and Mutation/` | About ownership, borrowing, shared mutability, `unsafe`. |
-| `Rust Practices/Functions and Data/` | About function shape, contracts, data layout. |
-| `Rust Practices/Testing/` | About what to test, at what level, with what oracles. |
-| `Rust Practices/Tooling and Quality/` | About clippy, CI, docs, formatting — anything enforced by tooling. |
-| `Architecture/` (root) | Workspace-scale rules: layout, configuration, the load-bearing principles of how crates relate. |
-| `Architecture/Patterns/` | Recurring cross-cutting patterns: feature gating, binary strategy, library-first design, reference implementations. |
+| `Languages/Rust/Practices/Foundational/` | The lesson is a load-bearing Rust principle that touches multiple subcategories (push correctness left, predictable APIs, type system as design tool). |
+| `Languages/Rust/Practices/Type-Driven Design/` | About using the type system to constrain or model — newtypes, builders, state types, making invalid states unrepresentable. |
+| `Languages/Rust/Practices/Effect Isolation/` | About separating pure logic from effects — pure cores, traits as seams, testability without heroics. |
+| `Languages/Rust/Practices/Error Handling/` | About `Result`, panics, error types, error boundaries. |
+| `Languages/Rust/Practices/Ownership and Mutation/` | About ownership, borrowing, shared mutability, `unsafe`. |
+| `Languages/Rust/Practices/Functions and Data/` | About function shape, contracts, data layout. |
+| `Languages/Rust/Practices/Testing/` | About what to test, at what level, with what oracles. |
+| `Languages/Rust/Practices/Tooling and Quality/` | About clippy, CI, docs, formatting — anything enforced by Rust tooling. |
+| `Languages/Rust/Workspace/` (root) | Cargo workspace-scale rules: layout, configuration, the load-bearing principles of how crates relate. |
+| `Languages/Rust/Workspace/Patterns/` | Cargo-specific recurring patterns: shared dependencies, workspace lints/profiles, Cargo feature mechanics. |
+| `Languages/<other-lang>/...` | (When future language scopes land — TypeScript, etc. — they mirror this shape: `Languages/<lang>/Practices/...` and `Languages/<lang>/Workspace/...` or equivalent project-shape folder.) |
+| `Integration/Rust-WASM-TS/` | Cross-language integration patterns: e.g. Rust→WASM→TS interop, generated TS surfaces, boundary-crossing performance. Cross-references both Rust and TS scopes. |
 
-If a note plausibly fits two folders, pick the one that matches the **dominant claim** of the note — not the topic it touches in passing. If neither folder fits, that is a signal: re-read section 2 (you may be writing the wrong note) and section 1 (it may be project-specific).
+If a note plausibly fits two folders, pick the one that matches the **dominant claim** of the note — not the topic it touches in passing. If the note is genuinely cross-language, prefer `Engineering Philosophy/` (universal principle) plus a thin language-specific application note over duplicating the principle in each language scope. If neither folder fits, that is a signal: re-read section 2 (you may be writing the wrong note) and section 1 (it may be project-specific).
 
 ---
 
 ## 5. Linking conventions
 
-- **Use full-path wikilinks** in the body and in MOCs: `[[Architecture/Patterns/Feature Gating]]` — never bare `[[Feature Gating]]`. Resolves unambiguously when the vault is read as raw markdown by an agent or by another tool.
-- **Every note must be linked from at least one MOC** in its section *and* from at least one other note's `## Related` section. Orphan notes do not exist in this vault.
+- **Use full-path wikilinks** in the body and in MOCs: `[[Languages/Rust/Workspace/Patterns/Shared Dependencies]]` — never bare `[[Shared Dependencies]]`. Resolves unambiguously when the vault is read as raw markdown by an agent or by another tool. Cross-scope wikilinks (e.g. a per-language note linking into `Engineering Philosophy/`) follow the same rule.
+- **Meta-file exception.** A few filenames appear at multiple paths by design — `AGENTS.md` (root router plus one per scope), `README.md` (root plus consumer-template), `CLAUDE.md` (root plus consumer-template). Convention: bare `[[AGENTS]]` / `[[README]]` / `[[CLAUDE]]` always refers to the **vault-root** copy (the entry point); any non-root copy must be path-qualified (`[[consumer-template/README]]`, `[[Languages/Rust/AGENTS]]`, etc.). The root [[AGENTS]] router is an exception to the full-path-by-default rule because the bare form is the canonical entry point.
+- **Every note must be linked from at least one MOC** in its scope *and* from at least one other note's `## Related` section. Orphan notes do not exist in this vault.
 - **`## Related` is curated, not exhaustive.** List 2–5 strongest neighbors. If you find yourself listing eight, the note's scope is too broad — see section 2.
 - **Links are bidirectional in spirit.** If note A links to note B as related, note B should link back. Check both directions when adding a Related entry.
 - **Never link to non-existent notes.** No `[[TODO: write this]]` placeholders. If the linked idea doesn't have a note yet, write the note first or use prose.
@@ -147,9 +158,9 @@ The vault is direct. Knuth-direct. Match the existing tone:
 
 Adding or substantially editing a note has three downstream consequences. **All three are required**, not optional:
 
-1. **The section MOC** ([[Engineering Philosophy/Engineering Philosophy MOC]], [[Rust Practices/Rust Practices MOC]], [[Architecture/Workspace Architecture MOC]]) — list the note with a one-line summary in the appropriate group.
-2. **AGENTS.md "When to consult what"** — if the note changes *when* an agent should consult the vault (a new trigger, a new work type), add or update a trigger group.
-3. **AGENTS.md "Full note index"** — list the note with its `summary:` text in the appropriate folder group. Every note appears here exactly once.
+1. **The scope's MOC** — for `Engineering Philosophy/`: [[Engineering Philosophy/Engineering Philosophy MOC]]; for `Languages/Rust/Practices/`: [[Languages/Rust/Practices/Rust Practices MOC]]; for `Languages/Rust/Workspace/`: [[Languages/Rust/Workspace/Workspace Architecture MOC]]. Future language scopes have their own MOCs. List the note with a one-line summary in the appropriate group.
+2. **The scope's AGENTS.md "When to consult what"** — every scope has its own AGENTS.md ([[Engineering Philosophy/AGENTS]], [[Languages/Rust/AGENTS]], [[Integration/Rust-WASM-TS/AGENTS]]). If the note changes *when* an agent should consult the vault (a new trigger, a new work type), add or update a trigger group in the relevant scope's AGENTS.md. If the trigger genuinely spans scopes, the trigger lives in the scope where the dominant action is taken.
+3. **The scope's AGENTS.md "Full note index"** — every scope's AGENTS.md indexes its own scope. List the note with its `summary:` text in the appropriate folder group. Every note appears in exactly one scope's index.
 
 If the note replaces an existing one or significantly changes its thesis, also audit `## Related` sections in neighbor notes for staleness.
 
@@ -254,7 +265,7 @@ Every PR description (use the template at `.github/pull_request_template.md`) mu
 1. **Lane** — one of Add / Refine / Audit / Meta.
 2. **What changed** — bullet list, file-level granularity.
 3. **Why** — the lesson, observation, or finding driving the change. For a Refine PR, link the resolved issue file.
-4. **Index updates done** — checklist confirming the three consequences from §7 (section MOC, AGENTS.md trigger group fit, AGENTS.md full index) when applicable.
+4. **Index updates done** — checklist confirming the three consequences from §7 (the scope's MOC, the scope's AGENTS.md trigger group fit, the scope's AGENTS.md full index) when applicable.
 5. **Audit checks run** — for non-trivial PRs, state which subset of [[AUDIT]] §1 was run and that it passed (or list new findings the PR addresses). PRs that only touch a single note's body need not run the full audit.
 6. **Changelog entry** — confirm the `## [Unreleased]` section of [[CHANGELOG]] has been updated with a one-line entry under the appropriate category. PR will not merge without this.
 
@@ -329,10 +340,10 @@ Entries are short, declarative, and link to the affected file or issue. Examples
 
 ```markdown
 ### Added
-- New note: [[Rust Practices/Effect Isolation/Side Effect Inventory]] — catalogs effect categories that should sit at the edge.
+- New note: [[Languages/Rust/Practices/Effect Isolation/Side Effect Inventory]] — catalogs effect categories that should sit at the edge.
 
 ### Changed
-- [[Architecture/Patterns/CPU Reference Path]] — generalized title and body to "Reference Implementation Path" to cover SIMD/FFI cases. **Breaking:** wikilink target moved.
+- [[Engineering Philosophy/Principles/Reference Implementation as Oracle]] — generalized title and body to cover SIMD/FFI cases. **Breaking:** wikilink target moved.
 
 ### Issues Resolved
 - [Issues/2026-05-12-sharp-oracles-property-test-case.md](./Issues/2026-05-12-sharp-oracles-property-test-case.md) — added a worked property-test example to [[Engineering Philosophy/Principles/Sharp Oracles]].

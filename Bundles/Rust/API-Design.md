@@ -45,7 +45,7 @@ A surprising API is also harder to refactor, because callers have built mental m
 - `is_*` returns `bool`. `has_*` returns `bool`. Don't use them for fallible getters.
 - Avoid abbreviations unless they're domain-standard (`buf`, `ctx`, `cfg` are fine; `prc`, `mng`, `xfr` are not).
 
-*Source: [[Rust Practices/Foundational/Predictable APIs]]*
+*Source: [[Languages/Rust/Practices/Foundational/Predictable APIs]]*
 
 ---
 
@@ -137,7 +137,7 @@ pub struct Config { pub port: u16, pub fast: bool, pub mode: Mode, /* ... */ }
 
 All-public fields look ergonomic but mean every caller can construct any combination, including invalid ones. Save this shape for **plain data records** with no invariants — config DTOs read from disk that you immediately validate into a private-fields version.
 
-*Source: [[Rust Practices/Type-Driven Design/Checked Constructors and Builders]]*
+*Source: [[Languages/Rust/Practices/Type-Driven Design/Checked Constructors and Builders]]*
 
 ---
 
@@ -218,12 +218,12 @@ RUSTDOCFLAGS="-D warnings" cargo doc --workspace --no-deps
 
 These keep documentation honest the same way Clippy keeps code honest.
 
-*Source: [[Rust Practices/Tooling and Quality/Documentation as Truth]]*
+*Source: [[Languages/Rust/Practices/Tooling and Quality/Documentation as Truth]]*
 
 ---
 
 ## Related bundles
 
-- [[Bundles/Module-Design]] — the module shape underneath the API; design them together
-- [[Bundles/Error-Handling]] — typed error enums are part of the public API
-- [[Bundles/Code-Review]] — what to check when an API change lands in a diff
+- [[Bundles/Rust/Module-Design]] — the module shape underneath the API; design them together
+- [[Bundles/Rust/Error-Handling]] — typed error enums are part of the public API
+- [[Bundles/Rust/Code-Review]] — what to check when an API change lands in a diff

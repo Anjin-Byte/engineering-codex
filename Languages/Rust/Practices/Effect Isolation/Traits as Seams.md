@@ -18,7 +18,7 @@ Use a trait when you genuinely need a substitution point:
 - **Clock abstraction** — production uses system time, tests inject a fixed instant.
 - **Filesystem abstraction** — production uses `std::fs`, tests use an in-memory implementation.
 - **Repository / service boundaries** — for swapping persistence backends.
-- **Reference vs optimized engine boundary** — see [[CPU Reference Path]].
+- **Reference vs optimized engine boundary** — see [[Engineering Philosophy/Principles/Reference Implementation as Oracle]].
 - **Parser / serializer boundaries** — for plugging in different formats.
 
 In each case there is a real second implementation (test double, alternate backend, future replacement) that justifies the trait.
@@ -65,4 +65,4 @@ Split into:
 
 - [[Pure Core Effectful Edges]]
 - [[Tests Without Heroics]]
-- [[CPU Reference Path]]
+- [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]

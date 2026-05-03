@@ -10,7 +10,7 @@ Each PR fits one lane (Add / Refine / Audit / Meta). Mark it below.
 - [ ] **Add** — new content (note, bundle, meta-file). Governed by CONTRIBUTING.md §1–§9.
 - [ ] **Refine** — resolves a tracked issue in `Issues/`. Governed by ISSUES.md §8.
 - [ ] **Audit** — applies findings from a vault audit. Governed by AUDIT.md §4 repair policy.
-- [ ] **Meta** — touches CONTRIBUTING / AGENTS / README / AUDIT / ISSUES / CHANGELOG.
+- [ ] **Meta** — touches CONTRIBUTING / any AGENTS file (root router or per-scope) / README / AUDIT / ISSUES / CHANGELOG.
 
 ## What changed
 
@@ -29,10 +29,10 @@ For Refine PRs, link the resolved issue file: `Resolves Issues/YYYY-MM-DD-slug.m
 
 <!-- Confirm each consequence applicable to this PR. CONTRIBUTING.md §7. -->
 
-- [ ] Section MOC updated (Engineering Philosophy / Rust Practices / Workspace Architecture) — N/A if no notes added/moved.
-- [ ] AGENTS.md "When to consult what" trigger groups — updated or N/A.
-- [ ] AGENTS.md "Full note index" — updated or N/A.
-- [ ] Bundles refreshed if a constituent note's TL;DR or body changed — N/A if not applicable.
+- [ ] Scope MOC updated (Engineering Philosophy / Languages/Rust/Practices / Languages/Rust/Workspace / future per-language MOC) — N/A if no notes added/moved.
+- [ ] Relevant scope's AGENTS.md "When to consult what" trigger groups — updated or N/A. (The root [[AGENTS]] router rarely needs touching; per-scope AGENTS files do.)
+- [ ] Relevant scope's AGENTS.md "Full note index" — updated or N/A. Each note appears in exactly one scope's index.
+- [ ] Bundles refreshed if a constituent note's TL;DR or body changed — N/A if not applicable. Bundles are scoped per language (`Bundles/Universal/`, `Bundles/Rust/`).
 
 ## Audit checks
 
@@ -47,7 +47,7 @@ Single-note body edits don't need the full audit.
 - [ ] No orphans introduced (§1.4).
 - [ ] No project nouns (§1.5).
 - [ ] No Obsidian-only syntax (§1.6).
-- [ ] AGENTS.md structure intact (§1.7).
+- [ ] All AGENTS files structurally intact (§1.7) — root router and per-scope.
 - [ ] Bundle freshness verified, if bundles were touched (§1.8).
 
 ## Changelog

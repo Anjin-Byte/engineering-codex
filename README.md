@@ -1,14 +1,14 @@
 ---
 title: Engineering Codex
 tags: [index, vault-root]
-summary: "Engineering standards for Rust projects: language-agnostic philosophy, Rust-specific code idioms, and Cargo workspace architecture."
+summary: "Engineering standards for multi-language projects: language-agnostic philosophy, per-language practices and architecture, and cross-language integration patterns."
 ---
 
-*A three-section vault — philosophy, Rust practices, architecture — covering how to reason, code, and shape a workspace toward long-term reliability.*
+*A multi-scope vault — universal philosophy, per-language disciplines (Rust today; more as they land), and cross-language integration — covering how to reason, code, and shape a project toward long-term reliability.*
 
 # Engineering Codex
 
-A general-purpose set of engineering standards for any Rust project. The philosophy section is language-agnostic and applies anywhere; the workspace-architecture and Rust-practices sections target Rust workspaces specifically.
+A general-purpose set of engineering standards organized into orthogonal scopes. The Engineering Philosophy scope is language-agnostic and applies anywhere. Per-language scopes hold code-level practices and project/workspace architecture for each language the vault covers (Rust today). The Integration scope holds patterns for projects that cross language boundaries (Rust↔WASM↔TS, etc.). An agent or reader loads only the scopes that apply.
 
 ## Repository format
 
@@ -20,24 +20,29 @@ You don't need Obsidian to *use* the standards — agents and humans can read th
 
 ## Start here
 
-- [[Engineering Philosophy MOC]] — how to reason about correctness and attack programs with adversarial tests (language-agnostic)
-- [[Rust Practices MOC]] — code-level idioms for writing Rust that favors stability and testability
-- [[Workspace Architecture MOC]] — how to shape a Cargo workspace for a non-trivial application
+- [[Engineering Philosophy/Engineering Philosophy MOC]] — how to reason about correctness and attack programs with adversarial tests (language-agnostic, always relevant)
+- [[Languages/Rust/Practices/Rust Practices MOC]] — code-level idioms for writing Rust that favors stability and testability
+- [[Languages/Rust/Workspace/Workspace Architecture MOC]] — how to shape a Cargo workspace for a non-trivial Rust application
 
 ## Folder map
 
-- **Engineering Philosophy/** — eight Knuth-style principles for reasoning, design, and adversarial testing. Applies to any project, any language.
-  - [[Engineering Philosophy MOC]] — the entry-point map
-  - [[Output Format]] — the four-section template (correctness model → invariants → design → test strategy)
-  - [[Principles Index]] — the eight principles
-- **Rust Practices/** — principles for writing the Rust code inside crates.
-  - [[Rust Practices MOC]] — the entry-point map
-  - [[Rust Practices Checklist]] — condensed code-review form
-  - Subfolders: Foundational, Type-Driven Design, Effect Isolation, Error Handling, Ownership and Mutation, Functions and Data, Testing, Tooling and Quality
-- **Architecture/** — Cargo workspace structure, crate boundaries, and recurring architectural patterns.
-  - [[Workspace Architecture MOC]] — the entry-point map
-  - [[Core Principles]] — the load-bearing rules
-  - [[Patterns Index]] — cross-cutting design patterns
+- **Engineering Philosophy/** — Knuth-style principles for reasoning, design, and adversarial testing. Applies to any project, any language. Always relevant.
+  - [[Engineering Philosophy/Engineering Philosophy MOC]] — the entry-point map
+  - [[Engineering Philosophy/Output Format]] — the four-section template (correctness model → invariants → design → test strategy)
+  - [[Engineering Philosophy/Principles/Principles Index]] — the principles
+- **Languages/** — per-language disciplines. Each language is its own self-contained scope; agents load only the languages that apply.
+  - **Languages/Rust/Practices/** — code-level idioms for Rust.
+    - [[Languages/Rust/Practices/Rust Practices MOC]] — the entry-point map
+    - [[Languages/Rust/Practices/Rust Practices Checklist]] — condensed code-review form
+    - Subfolders: Foundational, Type-Driven Design, Effect Isolation, Error Handling, Ownership and Mutation, Functions and Data, Testing, Tooling and Quality
+  - **Languages/Rust/Workspace/** — Cargo workspace structure, crate boundaries, and Cargo-specific architectural patterns.
+    - [[Languages/Rust/Workspace/Workspace Architecture MOC]] — the entry-point map
+    - [[Languages/Rust/Workspace/Core Principles]] — the load-bearing rules
+    - [[Languages/Rust/Workspace/Patterns/Patterns Index]] — Cargo-specific patterns
+- **Integration/** — patterns for projects that cross language boundaries (e.g. Rust↔WASM↔TS). Placeholder scope; populated in a future release.
+- **Bundles/** — pre-materialized task contexts, scoped per language so loading a bundle never costs cross-scope context.
+  - **Bundles/Universal/** — bundles drawing only from Engineering Philosophy.
+  - **Bundles/Rust/** — bundles for Rust tasks (code review, test design, module design, error handling, API design).
 
 ## Adding to the vault
 
@@ -55,25 +60,26 @@ Agents should read [[AGENTS]] first. It covers when to consult what, the full no
 
 To wire this vault into another project's repo so its AI tools (Claude Code, Codex, etc.) consult it on engineering tasks, see [[consumer-template/README]]. Three integration paths are documented (vendored copy, git submodule, symlink), along with a drop-in `CLAUDE.md` snippet at [[consumer-template/CLAUDE]] that the consuming project pastes into its own root.
 
-For high-frequency tasks, the `Bundles/` folder contains pre-materialized single-file contexts so an agent can grab one bundle instead of resolving multiple wikilinks. See the AGENTS.md "Bundles/" index for the current list.
+For high-frequency tasks, `Bundles/<scope>/<task>.md` provides pre-materialized single-file contexts so an agent can grab one bundle instead of resolving multiple wikilinks. Bundles are scoped per language; see the relevant scope's AGENTS file for the bundles that apply.
 
-## How the three sections relate
+## How the scopes relate
 
-| Section | Answers |
+| Scope | Answers |
 |---|---|
-| **Engineering Philosophy** | How do we *reason and test* toward correctness? |
-| **Rust Practices** | What does good code look like at the line level? |
-| **Architecture** | What does a Rust workspace look like in the large? |
+| **Engineering Philosophy** (universal) | How do we *reason and test* toward correctness? |
+| **Languages/`<lang>`/Practices** | What does good code look like at the line level *in this language*? |
+| **Languages/`<lang>`/Workspace** | What does a project of this language look like in the large? |
+| **Integration/** | How do we cross language boundaries safely? |
 
-The architecture defines what good looks like in the large. The Rust practices define what good looks like at the line level. The philosophy defines how we know we've achieved either.
+The per-language workspace scope defines what good looks like in the large. The per-language practices scope defines what good looks like at the line level. The philosophy defines how we know we've achieved either, regardless of language.
 
-A worked example of how the three interlock: an architectural rule like keeping external-system boundaries narrow ([[Core Principles]]) is realized at the line level by [[Pure Core Effectful Edges]]; both are *defended* by the adversarial testing posture of [[Tests Should Make Programs Fail]] and the differential oracles of [[Sharp Oracles]] (e.g. comparing an optimized implementation to a reference via the [[CPU Reference Path]]).
+A worked example of how the scopes interlock for Rust: a universal architectural principle like keeping external-system boundaries narrow ([[Engineering Philosophy/Principles/Architectural Core Principles]], applied to Cargo at [[Languages/Rust/Workspace/Core Principles]]) is realized at the line level by [[Languages/Rust/Practices/Effect Isolation/Pure Core Effectful Edges]]; both are *defended* by the adversarial testing posture of [[Engineering Philosophy/Principles/Tests Should Make Programs Fail]] and the differential oracles of [[Engineering Philosophy/Principles/Sharp Oracles]] (e.g. comparing an optimized implementation to a reference via [[Engineering Philosophy/Principles/Reference Implementation as Oracle]] and its Cargo wiring at [[Languages/Rust/Workspace/Patterns/Reference Path Cargo Wiring]]).
 
 ## Adapting this vault
 
-The philosophy section needs no adaptation — it is already general. The Rust practices section assumes Rust but is otherwise project-agnostic. The architecture section assumes a Cargo workspace; the patterns generalize to any application that wants pure core, narrow adapters, and a thin binary layer.
+The Engineering Philosophy scope needs no adaptation — it is already general. Per-language scopes assume their language but make no project-specific assumptions inside that scope. The Integration scope is for projects that genuinely cross language boundaries.
 
-If you are using these notes on a non-Rust project, the Engineering Philosophy section is the part that travels.
+If you are using these notes on a project whose language doesn't yet have its own scope in the vault, the Engineering Philosophy scope is the part that travels — the rest is opt-in.
 
 ## License
 

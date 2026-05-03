@@ -17,19 +17,20 @@ Entry point for understanding **why** a Rust workspace is shaped a particular wa
 
 ## Foundational reading order
 
-1. [[Core Principles]] — the load-bearing rules
-2. [[Workspace Layout]] — directory structure
-3. [[Cargo Workspace Configuration]] — root manifest
-4. [[Patterns Index]] — recurring design patterns
+1. [[Engineering Philosophy/Principles/Architectural Core Principles]] — the universal load-bearing rules
+2. [[Languages/Rust/Workspace/Core Principles]] — how those rules apply to a Cargo workspace
+3. [[Languages/Rust/Workspace/Workspace Layout]] — directory structure
+4. [[Languages/Rust/Workspace/Cargo Workspace Configuration]] — root manifest
+5. [[Languages/Rust/Workspace/Patterns/Patterns Index]] — recurring Cargo workspace patterns
 
-## Patterns
+## Patterns (Cargo wiring for universal principles)
 
-- [[Headless First]] — library-first; binaries are thin
-- [[CPU Reference Path]] — keep a reference implementation alongside any optimized one
-- [[Binary Strategy]] — one binary vs. several
-- [[Feature Gating]] — when to use Cargo features
-- [[Shared Dependencies]] — what belongs in `workspace.dependencies`
-- [[Workspace Lints and Profiles]] — root-only configuration
+- [[Languages/Rust/Workspace/Patterns/Headless First Cargo Wiring]] — Cargo expression of [[Engineering Philosophy/Principles/Headless First]]
+- [[Languages/Rust/Workspace/Patterns/Reference Path Cargo Wiring]] — Cargo expression of [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]
+- [[Languages/Rust/Workspace/Patterns/Cargo Binary Strategy]] — Cargo expression of [[Engineering Philosophy/Principles/One Binary or Many]]
+- [[Languages/Rust/Workspace/Patterns/Cargo Feature Gating]] — Cargo expression of [[Engineering Philosophy/Principles/Capability Slices vs Implementation Switches]]
+- [[Languages/Rust/Workspace/Patterns/Shared Dependencies]] — what belongs in `workspace.dependencies`
+- [[Languages/Rust/Workspace/Patterns/Workspace Lints and Profiles]] — root-only configuration
 
 ## The condensed rules
 

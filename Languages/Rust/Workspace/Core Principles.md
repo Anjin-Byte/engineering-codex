@@ -1,59 +1,59 @@
 ---
 title: Core Principles
-tags: [architecture, principles]
-summary: "Four load-bearing rules that drive workspace decisions: pure core, narrow adapters, isolated UI, root-owned configuration."
-keywords: [hexagonal architecture, ports and adapters, separation of concerns, dependency direction, layering, design smells]
+tags: [architecture, principles, cargo]
+summary: How the four universal architectural principles map to a Cargo workspace — crate-shaped boundaries, headless binary crate, deployable-unit crate split, core/optimized adapter twin.
+keywords: [hexagonal architecture, ports and adapters, separation of concerns, crate boundaries, workspace topology, design smells]
 ---
 
-*Four principles govern any decision about workspace shape; treat any future change that violates one of them as a smell to revisit.*
+*The four universal architectural principles, applied to Cargo workspace topology.*
 
-# Core Principles
+# Core Principles (Cargo Application)
 
-Four principles drive workspace decisions. If a future change violates one of these, treat that as a smell and revisit the design.
+The four principles that drive project shape are universal; they live at [[Engineering Philosophy/Principles/Architectural Core Principles]]. This note covers how a Cargo workspace expresses them. Read the universal note first.
 
-## 1. Keep external-system boundaries narrow
+## How each principle maps to Cargo
 
-Core algorithms should not know about the types of any external system (a device API, a windowing library, a heavy third-party SDK) unless absolutely necessary.
+### 1. Narrow external-system boundaries → core / adapter / cli / ui crate split
 
-**Bad shape:** application logic directly manipulates external-system types, configuration, window state, CLI args, and file I/O all in one crate.
+- **`core` crate(s)** — domain types, algorithms, deterministic transformations. No external-system dependencies, no UI, no I/O.
+- **Adapter crates** — one per external system (a device API, a windowing library, a heavy SDK), with its own narrow public API.
+- **`cli` crate** — argument parsing, file I/O, logging, exit codes. Orchestrates; contains no domain logic.
+- **`ui` crate** (optional) — interactive front-end, depends on `core` but not vice versa.
 
-**Better shape:** split by responsibility:
+The dependency graph runs *inward*: `cli` and `ui` depend on `core` and adapters; `core` depends on nothing project-specific.
 
-- **core crate(s)** — domain types, algorithms, deterministic transformations
-- **adapter crate(s)** — one per external system being wrapped, with its own narrow public API
-- **cli crate** — argument parsing, file I/O, logging, exit codes
-- **optional UI crate** — interactive front-end, isolated from core
+### 2. Headless default → headless binary crate has no UI dependency
 
-That way, most logic can be tested without the external systems present at all.
+The headless binary crate's `Cargo.toml` lists no UI / windowing dependency at any feature level. Verify with `cargo tree --no-default-features`. See [[Languages/Rust/Workspace/Patterns/Headless First Cargo Wiring]] for the two Cargo expressions (separate binary crates vs feature-gated UI).
 
-See: [[Headless First]]
+### 3. Workspace reflects deployable units → crate-per-deployable-unit
 
-## 2. Treat headless as the default, interactive UI as an add-on
+If something can be built, tested, or shipped independently, it deserves its own crate. The workspace member list is the deployable-unit list.
 
-A library-first design lets the same code be embedded in CLIs, services, batch jobs, CI pipelines, and tests. Interactive UI is layered on top — never required for the core to work. See: [[Headless First]].
+Five meaningful crates beats twelve decorative ones. Conversely, a single monolith crate that contains parts with genuinely different lifecycles (a CLI binary intermixed with library code) eventually needs splitting.
 
-## 3. Make the workspace reflect deployable units
+### 4. Reference path alongside optimized → core crate vs optimized adapter crate
 
-Rule of thumb: **if something can be built, tested, or shipped independently, it deserves its own crate.**
+For any optimized algorithm (SIMD, GPU, FFI, hand-rolled), the canonical implementation lives in the core crate; the accelerated implementation lives in an adapter crate (e.g. `accel-gpu`, `accel-simd`). Tests cross-validate. See [[Languages/Rust/Workspace/Patterns/Reference Path Cargo Wiring]].
 
-Do not split crates just to look sophisticated. A workspace with five meaningful crates is better than one with twelve decorative gourds.
+## Workspace shape that satisfies all four
 
-See: [[Workspace Layout]]
+```
+crates/
+  core/                # rule 1, 4 — pure domain, canonical reference
+  adapters/
+    storage/           # rule 1 — narrow external-system wrapper
+    accel-gpu/         # rule 4 — optimized adapter for the reference in core
+  cli/                 # rule 2 — headless binary, zero UI deps
+  viewer/              # rule 2 — optional UI as separate binary crate
+```
 
-## 4. Always keep a reference implementation alongside any optimized path
+Five crates, four principles satisfied. Each crate's reason for existing is one of the four rules.
 
-For any algorithm with an optimized implementation (SIMD, GPU, FFI, hand-rolled), maintain a reference implementation in pure, deterministic code.
+## Related
 
-Reasons:
-- correctness oracle
-- testability in CI without the optimized environment
-- easier debugging
-- deterministic comparisons
-
-Workspace consequence:
-- **core**: canonical, deterministic behavior
-- **optimized adapter**: accelerated implementation
-
-This saves you from the classic optimization debugging experience: *"it is very fast and very wrong."*
-
-See: [[CPU Reference Path]]
+- [[Engineering Philosophy/Principles/Architectural Core Principles]]
+- [[Languages/Rust/Workspace/Workspace Layout]]
+- [[Languages/Rust/Workspace/Patterns/Headless First Cargo Wiring]]
+- [[Languages/Rust/Workspace/Patterns/Reference Path Cargo Wiring]]
+- [[Languages/Rust/Workspace/Patterns/Cargo Binary Strategy]]

@@ -37,7 +37,7 @@ That is the Rust version of building a house with fewer trapdoors.
 
 If a PR review surfaces friction that doesn't fit the checklist, the corresponding long-form note in [[Rust Practices MOC]] usually has the deeper guidance.
 
-*Source: [[Rust Practices/Rust Practices Checklist]]*
+*Source: [[Languages/Rust/Practices/Rust Practices Checklist]]*
 
 ---
 
@@ -151,7 +151,7 @@ Useful when the exact output depends on implementation choices but properties of
 
 #### Differential check vs. reference
 
-When you have an optimized implementation alongside a slower reference (see [[CPU Reference Path]]):
+When you have an optimized implementation alongside a slower reference (see [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]):
 
 ```rust
 let reference = core::reference::process(&input);
@@ -272,6 +272,6 @@ When [[Tests Should Make Programs Fail|adversarial tests]] reveal a bug, they to
 
 ## Related bundles
 
-- [[Bundles/Test-Design]] — the constructive side of the same testing principles, for authoring rather than reviewing
-- [[Bundles/Error-Handling]] — review checks for the error-handling slice of a diff
-- [[Bundles/Module-Design]] — when a review surfaces structural problems, jump here to redesign
+- [[Bundles/Rust/Test-Design]] — the constructive side of the same testing principles, for authoring rather than reviewing
+- [[Bundles/Rust/Error-Handling]] — review checks for the error-handling slice of a diff
+- [[Bundles/Rust/Module-Design]] — when a review surfaces structural problems, jump here to redesign

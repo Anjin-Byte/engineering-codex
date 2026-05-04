@@ -39,10 +39,18 @@ You don't need Obsidian to *use* the standards — agents and humans can read th
     - [[Languages/Rust/Workspace/Workspace Architecture MOC]] — the entry-point map
     - [[Languages/Rust/Workspace/Core Principles]] — the load-bearing rules
     - [[Languages/Rust/Workspace/Patterns/Patterns Index]] — Cargo-specific patterns
+  - **Languages/TypeScript/Practices/** — code-level idioms for TypeScript.
+    - [[Languages/TypeScript/Practices/TypeScript Practices MOC]] — the entry-point map
+    - [[Languages/TypeScript/Practices/TypeScript Practices Checklist]] — condensed code-review form
+    - Subfolders: Foundational, Type-Driven Design, Error Handling, Async and Concurrency, Testing, Tooling and Quality, Performance (advanced/optional)
+  - **Languages/TypeScript/Workspace/** — TypeScript project layout, build configuration, and release engineering.
+    - [[Languages/TypeScript/Workspace/TypeScript Workspace Architecture MOC]] — the entry-point map
+    - Subfolder: Release Engineering (release gate pipeline, npm lockfile + audit, provenance + SBOM, Permission Model adoption)
 - **Integration/** — patterns for projects that cross language boundaries (e.g. Rust↔WASM↔TS). Placeholder scope; populated in a future release.
 - **Bundles/** — pre-materialized task contexts, scoped per language so loading a bundle never costs cross-scope context.
   - **Bundles/Universal/** — bundles drawing only from Engineering Philosophy.
   - **Bundles/Rust/** — bundles for Rust tasks (code review, test design, module design, error handling, API design).
+  - **Bundles/TypeScript/** — bundles for TypeScript tasks (code review, test design, module design, error handling).
 
 ## Adding to the vault
 

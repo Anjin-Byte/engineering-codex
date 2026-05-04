@@ -15,6 +15,12 @@ This file routes agents through the universal portion of the vault. The principl
 Universal triggers — task types whose guidance does not depend on the project's language.
 
 - **Producing a written analysis or design doc** → [[Engineering Philosophy/Output Format]]; [[Engineering Philosophy/Principles/Reason About Correctness]]; [[Engineering Philosophy/Principles/Reasoning Beside Code]]; [[Engineering Philosophy/Principles/Explicit Not Magical]]; [[Engineering Philosophy/Principles/Human Understanding First]]. Bundle: [[Bundles/Universal/Written-Analysis]].
+- **Evaluating risk for a new system or service** → [[Engineering Philosophy/Principles/Layered Risk Categories]]; [[Engineering Philosophy/Principles/Architectural Core Principles]]; [[Engineering Philosophy/Principles/Specification Risk vs Type Soundness]]
+- **Choosing what tests prove what (test-strategy decisions)** → [[Engineering Philosophy/Principles/Evidence Ladder for Testing]]; [[Engineering Philosophy/Principles/Sharp Oracles]]; [[Engineering Philosophy/Principles/Tests Should Make Programs Fail]]; [[Engineering Philosophy/Principles/Normal Usage Is Not Testing]]
+- **Verifying distributed-protocol or workflow correctness** → [[Engineering Philosophy/Principles/Formal Modeling for Distributed State]]; [[Engineering Philosophy/Principles/Reason About Correctness]]; [[Engineering Philosophy/Principles/Specification Risk vs Type Soundness]]
+- **Designing an SLO or error-budget policy** → [[Engineering Philosophy/Principles/Error Budgets and Reliability Policy]]; [[Engineering Philosophy/Principles/Staged Canary Deployment]]
+- **Planning a deployment or rollout** → [[Engineering Philosophy/Principles/Staged Canary Deployment]]; [[Engineering Philosophy/Principles/Error Budgets and Reliability Policy]]; [[Engineering Philosophy/Principles/Configuration as Code Review]]
+- **Reviewing a configuration change** → [[Engineering Philosophy/Principles/Configuration as Code Review]]; [[Engineering Philosophy/Principles/Capability Slices vs Implementation Switches]]; [[Engineering Philosophy/Principles/Staged Canary Deployment]]
 
 Most other engineering triggers (review, test design, module design, error handling, API design, refactoring) are language-conditional and live in per-language AGENTS files. Those triggers cross-reference universal notes from this scope as needed.
 
@@ -43,6 +49,13 @@ Every philosophy note with its `summary:` text.
 - [[Engineering Philosophy/Principles/Reference Implementation as Oracle]] — Every algorithm with an optimized implementation must keep a simpler reference implementation alongside it as the correctness oracle.
 - [[Engineering Philosophy/Principles/One Binary or Many]] — Decide between one executable with subcommands or modes versus several based on whether the surfaces share lifecycle, dependencies, and audience.
 - [[Engineering Philosophy/Principles/Capability Slices vs Implementation Switches]] — Build-time configuration flags should represent real capability slices a downstream user would toggle, not internal implementation switches.
+- [[Engineering Philosophy/Principles/Layered Risk Categories]] — Engineering risk for any non-trivial system splits into six layers — specification, type model, runtime, concurrency, deployment, and supply chain — and a control either mitigates one layer or it does not earn its place.
+- [[Engineering Philosophy/Principles/Specification Risk vs Type Soundness]] — Types prove structural claims; tests, schemas, monitors, and formal models prove behavioral claims — the wrong invariant typed correctly is still wrong.
+- [[Engineering Philosophy/Principles/Evidence Ladder for Testing]] — Tests form an evidence ladder — unit, integration, end-to-end, property-based, fuzzing, fault injection, mutation, formal modeling — and each layer proves a distinct claim.
+- [[Engineering Philosophy/Principles/Formal Modeling for Distributed State]] — For workflows whose distributed-state logic is hard to reason about, invest in lightweight formal modeling early — the bugs found in code review or test are the easy ones.
+- [[Engineering Philosophy/Principles/Error Budgets and Reliability Policy]] — A service's reliability is a budget, not an aspiration — when the budget is exhausted, feature releases pause and reliability work takes priority by policy, not by negotiation.
+- [[Engineering Philosophy/Principles/Staged Canary Deployment]] — Default the deployment of any high-consequence change to a partial, time-limited rollout against a control population, with auto-rollback on SLO regression — because the alternative leaves no observation window.
+- [[Engineering Philosophy/Principles/Configuration as Code Review]] — Configuration changes deserve the same review rigor, rollback discipline, and audit trail as code changes — a runtime config flip with no review is a deployment with no review.
 
 ### Bundles/Universal/
 

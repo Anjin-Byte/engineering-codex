@@ -19,6 +19,7 @@ Engineering standards for multi-language projects: a language-agnostic philosoph
 - [[AGENTS]] — root router: detects scope and points at the relevant deeper-AGENTS files. **Start here.**
 - [[Engineering Philosophy/AGENTS]] — universal scope; always relevant.
 - [[Languages/Rust/AGENTS]] — Rust scope; load when the project uses Rust.
+- [[Languages/TypeScript/AGENTS]] — TypeScript scope; load when the project uses TypeScript.
 - [[Integration/Rust-WASM-TS/AGENTS]] — Rust↔WASM↔TS interop scope (placeholder until populated).
 - [[README]] — human-oriented orientation.
 - [[CONTRIBUTING]] — how to add a new note (only for additions; existing-note refinements go through ISSUES).

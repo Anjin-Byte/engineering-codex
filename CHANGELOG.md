@@ -11,10 +11,21 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) with
 ## [Unreleased]
 
 ### Added
--
+- Seven universal principles lifted into [`Engineering Philosophy/Principles/`](./Engineering%20Philosophy/Principles/) from the cross-language content of the TypeScript report (Phase B1 of the multilingual restructure): [[Engineering Philosophy/Principles/Layered Risk Categories]], [[Engineering Philosophy/Principles/Specification Risk vs Type Soundness]], [[Engineering Philosophy/Principles/Evidence Ladder for Testing]], [[Engineering Philosophy/Principles/Formal Modeling for Distributed State]], [[Engineering Philosophy/Principles/Error Budgets and Reliability Policy]], [[Engineering Philosophy/Principles/Staged Canary Deployment]], [[Engineering Philosophy/Principles/Configuration as Code Review]].
+- New "Delivery and reliability principles" section in [[Engineering Philosophy/Principles/Principles Index]].
+- Six new universal trigger groups in [[Engineering Philosophy/AGENTS]] (risk evaluation, test-strategy decisions, distributed-protocol verification, SLO/error-budget design, deployment planning, configuration review).
+- `Languages/TypeScript/` scope created with 18 practice notes plus AGENTS file (Phase B2 of the multilingual restructure): Strict Compiler Profile, Runtime Suitability Boundary, Discriminated Unions and Exhaustive Handling, Branded Types for Domain Identifiers, Satisfies for Configuration Tables, Result Pattern for Expected Failures, Process-Fatal vs Domain-Recoverable, Runtime Validation at Boundaries, Floating Promise Hygiene, Event Loop as Correctness Signal, Async Context Propagation, Deadline Propagation with AbortSignal, TypeScript Test Tooling, Typed Linting with typescript-eslint, Reference TSConfig, Reference ESLint Config, plus the TypeScript Practices MOC and Checklist.
+- New `Languages/TypeScript/Practices/Async and Concurrency/` folder for Node-specific async hygiene with no Rust analog.
+- TypeScript routing pointer added to root [[AGENTS]] router and [[CLAUDE]] entry-point list.
+- `Languages/TypeScript/Workspace/` scope created with 4 notes (Phase B3): Workspace Architecture MOC, Project Layout, TypeScript Execution, Bundling Decision.
+- `Languages/TypeScript/Workspace/Release Engineering/` subfolder with 4 notes: Release Gate Pipeline, npm Lockfile and Install Discipline, Provenance and SBOM, Permission Model Adoption.
+- `Languages/TypeScript/Practices/Performance/` folder with 2 advanced/optional notes: Allocation Hygiene, Object Shape Stability.
+- `Bundles/TypeScript/` scope with 4 task bundles: Code-Review, Test-Design, Module-Design, Error-Handling.
+- Three new universal trigger groups in [[Languages/TypeScript/AGENTS]] (project layout / monorepo / build, release pipeline / supply-chain controls, performance tuning).
+- CONTRIBUTING.md §5 meta-file exception extended to require path-qualified wikilinks for bundle basenames (`Code-Review.md` etc. now exist under multiple `Bundles/<scope>/` paths).
 
 ### Changed
--
+- [[Languages/Rust/AGENTS]] "Reviewing a PR or diff", "Designing a new module or crate", and "Writing tests" trigger groups now cross-reference the relevant new universal principles.
 
 ### Removed
 -

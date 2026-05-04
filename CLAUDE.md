@@ -20,7 +20,7 @@ Engineering standards for multi-language projects: a language-agnostic philosoph
 - [[Engineering Philosophy/AGENTS]] — universal scope; always relevant.
 - [[Languages/Rust/AGENTS]] — Rust scope; load when the project uses Rust.
 - [[Languages/TypeScript/AGENTS]] — TypeScript scope; load when the project uses TypeScript.
-- [[Integration/Rust-WASM-TS/AGENTS]] — Rust↔WASM↔TS interop scope (placeholder until populated).
+- [[Integration/Rust-WASM-TS/AGENTS]] — Rust↔WASM↔TS interop scope; load when the project compiles Rust to WebAssembly and consumes it from TypeScript.
 - [[README]] — human-oriented orientation.
 - [[CONTRIBUTING]] — how to add a new note (only for additions; existing-note refinements go through ISSUES).
 - [[ISSUES]] — how to file an issue against an existing note when use surfaces a problem.

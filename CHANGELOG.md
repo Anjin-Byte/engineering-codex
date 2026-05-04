@@ -1,3 +1,11 @@
+---
+title: Changelog
+tags: [meta, changelog, versioning]
+summary: Public record of vault changes by version. Resolved issues feed the Issues Resolved category. Versioning policy lives in CONTRIBUTING.md §11.
+---
+
+*The public record of vault changes. Each released version captures what was added, changed, removed, fixed, and which tracked issues closed.*
+
 # Changelog
 
 All notable changes to the Engineering Codex are recorded in this file.
@@ -23,6 +31,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) with
 - `Bundles/TypeScript/` scope with 4 task bundles: Code-Review, Test-Design, Module-Design, Error-Handling.
 - Three new universal trigger groups in [[Languages/TypeScript/AGENTS]] (project layout / monorepo / build, release pipeline / supply-chain controls, performance tuning).
 - CONTRIBUTING.md §5 meta-file exception extended to require path-qualified wikilinks for bundle basenames (`Code-Review.md` etc. now exist under multiple `Bundles/<scope>/` paths).
+- `Integration/Rust-WASM-TS/` scope populated (Phase C) with 11 content notes plus Integration MOC, replacing the placeholder AGENTS.md with the full scope file. Five subfolders: Decision and Architecture (3 notes), Boundary Design (3 notes), Tooling and Build (2 notes), Error Handling and DOM (2 notes), Testing (1 note).
+- New cross-references in [[Languages/Rust/AGENTS]] (Wiring an optimized algorithm trigger now points at Integration scope) and [[Languages/TypeScript/AGENTS]] (new "Considering Rust/WASM for a hot path" trigger).
+- Root [[AGENTS]] router and [[CLAUDE]] entry-point list updated to reflect that the Integration scope is populated.
 
 ### Changed
 - [[Languages/Rust/AGENTS]] "Reviewing a PR or diff", "Designing a new module or crate", and "Writing tests" trigger groups now cross-reference the relevant new universal principles.

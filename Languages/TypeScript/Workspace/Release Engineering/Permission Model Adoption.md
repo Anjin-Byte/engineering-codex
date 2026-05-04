@@ -1,7 +1,7 @@
 ---
 title: Permission Model Adoption
 tags: [release-engineering, typescript, node, permission-model, security]
-summary: Node's `--permission` flag restricts filesystem, network, child-process, worker, native-addon, WASI, and inspector access at the process level. Stable as of Node v22.13.0 / v23.5.0; defense in depth, not a sandbox against malicious code.
+summary: Node's `--permission` flag restricts filesystem, network, child-process, worker, and native-addon access at the process level — defense in depth, not a sandbox.
 keywords: [node permission model, --permission, --allow-fs-read, --allow-net, defense in depth, seat belt, runtime hardening]
 ---
 

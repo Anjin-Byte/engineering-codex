@@ -1,7 +1,7 @@
 ---
 title: Layered Risk Categories
 tags: [principle, architecture, risk, philosophy]
-summary: Engineering risk for any non-trivial system splits into six layers — specification, type model, runtime, concurrency, deployment, and supply chain — and a control either mitigates one layer or it does not earn its place.
+summary: Engineering risk splits into six layers — specification, type model, runtime, concurrency, deployment, supply chain — and a control either mitigates one or it is decoration.
 keywords: [risk surface, control mapping, defense in depth, threat modeling, ssdf, security layers, failure classes]
 ---
 

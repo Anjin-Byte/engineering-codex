@@ -22,7 +22,7 @@ For any engineering task:
 2. **If the project's language matches a per-language scope, also load** that scope's AGENTS file:
    - Rust → [[Languages/Rust/AGENTS]]
    - TypeScript → [[Languages/TypeScript/AGENTS]]
-3. **If the project integrates Rust↔WASM↔TS, also load** [[Integration/Rust-WASM-TS/AGENTS]] (placeholder until populated in a future release).
+3. **If the project integrates Rust↔WASM↔TS, also load** [[Integration/Rust-WASM-TS/AGENTS]] — boundary discipline for projects that compile Rust to WebAssembly and consume it from TypeScript.
 
 Do not load scopes that don't apply. Each AGENTS file is self-contained for its scope; loading more than the task requires wastes context.
 

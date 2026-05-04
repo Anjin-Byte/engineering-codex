@@ -1,7 +1,7 @@
 ---
 title: Object Shape Stability
 tags: [performance, typescript, v8, hidden-class, advanced]
-summary: V8's hidden-class optimization rewards objects whose property set, order, and types are stable across instances. Polymorphic shape on hot paths costs measurable performance — most teams will never need to optimize for this; the few that do should know the model.
+summary: V8's hidden-class optimization rewards objects with stable property set, order, and types. Polymorphic shape on hot paths costs measurable performance; most teams won't need this.
 keywords: [v8, hidden classes, inline caches, object shape, monomorphic, polymorphic, megamorphic, hot path]
 ---
 

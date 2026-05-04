@@ -1,7 +1,7 @@
 ---
 title: npm Lockfile and Install Discipline
 tags: [release-engineering, typescript, npm, lockfile, supply-chain]
-summary: Commit and review the lockfile; use `npm ci` (not `npm install`) in CI; gate on `npm audit` with a tiered policy and an explicit override process — installs must be deterministic and attributable.
+summary: Commit and review the lockfile; use `npm ci` in CI; gate on `npm audit` with a tiered policy and an explicit override process.
 keywords: [package-lock, pnpm-lock, yarn.lock, npm ci, npm install, npm audit, dependency review, lockfile drift]
 ---
 

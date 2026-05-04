@@ -28,6 +28,7 @@ Group by trigger.
 - **Configuring TypeScript project layout / monorepo / build** → [[Languages/TypeScript/Workspace/TypeScript Workspace Architecture MOC]]; [[Languages/TypeScript/Workspace/Project Layout]]; [[Languages/TypeScript/Workspace/TypeScript Execution]]; [[Languages/TypeScript/Workspace/Bundling Decision]]; [[Engineering Philosophy/Principles/Architectural Core Principles]]
 - **Setting up a release pipeline / supply-chain controls** → [[Languages/TypeScript/Workspace/Release Engineering/Release Gate Pipeline]]; [[Languages/TypeScript/Workspace/Release Engineering/npm Lockfile and Install Discipline]]; [[Languages/TypeScript/Workspace/Release Engineering/Provenance and SBOM]]; [[Languages/TypeScript/Workspace/Release Engineering/Permission Model Adoption]]; [[Engineering Philosophy/Principles/Staged Canary Deployment]]; [[Engineering Philosophy/Principles/Error Budgets and Reliability Policy]]; [[Engineering Philosophy/Principles/Configuration as Code Review]]
 - **Performance tuning on a hot path (advanced / optional)** → [[Languages/TypeScript/Practices/Performance/Allocation Hygiene]]; [[Languages/TypeScript/Practices/Performance/Object Shape Stability]]; [[Languages/TypeScript/Practices/Async and Concurrency/Event Loop as Correctness Signal]]; [[Engineering Philosophy/Principles/Reference Implementation as Oracle]]
+- **Considering Rust/WASM for a hot path** → [[Integration/Rust-WASM-TS/Decision and Architecture/Workers Before WASM]]; [[Integration/Rust-WASM-TS/Decision and Architecture/When Rust-WASM Is Justified]]; [[Integration/Rust-WASM-TS/Boundary Design/Boundary Crossing Cost]]; [[Languages/TypeScript/Practices/Performance/Allocation Hygiene]]
 
 ## Full note index (Languages/TypeScript/)
 
@@ -64,7 +65,7 @@ Every note in the TypeScript scope, grouped by folder, with its `summary:` text.
 
 ### Languages/TypeScript/Practices/Testing/
 
-- [[Languages/TypeScript/Practices/Testing/TypeScript Test Tooling]] — Each rung of the universal Evidence Ladder for Testing has a canonical TypeScript tool — node:test for unit, Testcontainers for integration, Playwright for E2E, fast-check for property-based, Jazzer.js for fuzzing, Stryker for mutation.
+- [[Languages/TypeScript/Practices/Testing/TypeScript Test Tooling]] — Each rung of the universal Evidence Ladder maps to a canonical TS tool — node:test, Testcontainers, Playwright, fast-check, Jazzer.js, Stryker.
 
 ### Languages/TypeScript/Practices/Tooling and Quality/
 
@@ -75,7 +76,7 @@ Every note in the TypeScript scope, grouped by folder, with its `summary:` text.
 ### Languages/TypeScript/Practices/Performance/ (advanced / optional)
 
 - [[Languages/TypeScript/Practices/Performance/Allocation Hygiene]] — JavaScript is garbage-collected; the only performance lever is allocation behavior. For hot paths, minimize per-iteration allocation, avoid retention in closures or caches, and measure the heap before changing flags.
-- [[Languages/TypeScript/Practices/Performance/Object Shape Stability]] — V8's hidden-class optimization rewards objects whose property set, order, and types are stable across instances. Polymorphic shape on hot paths costs measurable performance — most teams will never need to optimize for this; the few that do should know the model.
+- [[Languages/TypeScript/Practices/Performance/Object Shape Stability]] — V8's hidden-class optimization rewards objects with stable property set, order, and types. Polymorphic shape on hot paths costs measurable performance; most teams won't need this.
 
 ### Languages/TypeScript/Workspace/
 
@@ -86,10 +87,10 @@ Every note in the TypeScript scope, grouped by folder, with its `summary:` text.
 
 ### Languages/TypeScript/Workspace/Release Engineering/
 
-- [[Languages/TypeScript/Workspace/Release Engineering/Release Gate Pipeline]] — A critical-path TypeScript service merges to production only when typecheck, typed lint, tests, fuzzing regression, SAST, dependency audit, provenance, SBOM, canary, and post-canary SLO watch are all green — the pipeline is the policy.
-- [[Languages/TypeScript/Workspace/Release Engineering/npm Lockfile and Install Discipline]] — Commit and review the lockfile; use `npm ci` (not `npm install`) in CI; gate on `npm audit` with a tiered policy and an explicit override process — installs must be deterministic and attributable.
+- [[Languages/TypeScript/Workspace/Release Engineering/Release Gate Pipeline]] — A critical-path TypeScript service merges only when every gate is green — typecheck, typed lint, tests, SAST, audit, provenance, SBOM, canary, SLO watch.
+- [[Languages/TypeScript/Workspace/Release Engineering/npm Lockfile and Install Discipline]] — Commit and review the lockfile; use `npm ci` in CI; gate on `npm audit` with a tiered policy and an explicit override process.
 - [[Languages/TypeScript/Workspace/Release Engineering/Provenance and SBOM]] — Critical-path packages publish with npm provenance attestations and emit an SBOM. CycloneDX is operational/security-first; SPDX is compliance/licensing-first with ISO standing — many teams emit both.
-- [[Languages/TypeScript/Workspace/Release Engineering/Permission Model Adoption]] — Node's `--permission` flag restricts filesystem, network, child-process, worker, native-addon, WASI, and inspector access at the process level. Stable as of Node v22.13.0 / v23.5.0; defense in depth, not a sandbox against malicious code.
+- [[Languages/TypeScript/Workspace/Release Engineering/Permission Model Adoption]] — Node's `--permission` flag restricts filesystem, network, child-process, worker, and native-addon access at the process level — defense in depth, not a sandbox.
 
 ### Bundles/TypeScript/
 

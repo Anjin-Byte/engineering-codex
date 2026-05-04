@@ -1,3 +1,11 @@
+---
+title: Consumer-Template CLAUDE Snippet
+tags: [meta, integration, snippet]
+summary: Drop-in CLAUDE.md snippet that consuming projects paste into their own root CLAUDE.md to point agents at this vault.
+---
+
+*This file is a snippet, not a vault note. The body below the horizontal rule is meant to be copied verbatim into a consuming project's own CLAUDE.md.*
+
 # CLAUDE.md — Project Snippet
 
 > Copy or append the section below into your project's own `CLAUDE.md`. Replace the path placeholder with the actual location of the Engineering Codex on your machine or in your repo.

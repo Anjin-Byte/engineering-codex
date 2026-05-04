@@ -1,7 +1,7 @@
 ---
 title: Release Gate Pipeline
 tags: [release-engineering, typescript, ci, pipeline, quality-gate]
-summary: A critical-path TypeScript service merges to production only when typecheck, typed lint, tests, fuzzing regression, SAST, dependency audit, provenance, SBOM, canary, and post-canary SLO watch are all green — the pipeline is the policy.
+summary: A critical-path TypeScript service merges only when every gate is green — typecheck, typed lint, tests, SAST, audit, provenance, SBOM, canary, SLO watch.
 keywords: [ci pipeline, quality gates, codeql, semgrep, sast, npm audit, canary, slo watch, merge gate]
 ---
 

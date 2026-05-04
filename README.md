@@ -46,7 +46,10 @@ You don't need Obsidian to *use* the standards — agents and humans can read th
   - **Languages/TypeScript/Workspace/** — TypeScript project layout, build configuration, and release engineering.
     - [[Languages/TypeScript/Workspace/TypeScript Workspace Architecture MOC]] — the entry-point map
     - Subfolder: Release Engineering (release gate pipeline, npm lockfile + audit, provenance + SBOM, Permission Model adoption)
-- **Integration/** — patterns for projects that cross language boundaries (e.g. Rust↔WASM↔TS). Placeholder scope; populated in a future release.
+- **Integration/** — patterns for projects that cross language boundaries.
+  - **Integration/Rust-WASM-TS/** — projects compiling Rust to WebAssembly and consuming it from TypeScript: when it's justified, boundary design, tooling, error handling, DOM ownership, layered testing.
+    - [[Integration/Rust-WASM-TS/Integration MOC]] — the entry-point map
+    - Subfolders: Decision and Architecture, Boundary Design, Tooling and Build, Error Handling and DOM, Testing
 - **Bundles/** — pre-materialized task contexts, scoped per language so loading a bundle never costs cross-scope context.
   - **Bundles/Universal/** — bundles drawing only from Engineering Philosophy.
   - **Bundles/Rust/** — bundles for Rust tasks (code review, test design, module design, error handling, API design).

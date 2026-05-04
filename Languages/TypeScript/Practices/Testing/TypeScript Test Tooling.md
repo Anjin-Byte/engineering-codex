@@ -1,7 +1,7 @@
 ---
 title: TypeScript Test Tooling
 tags: [testing, typescript, node, tooling]
-summary: Each rung of the universal Evidence Ladder for Testing has a canonical TypeScript tool — node:test for unit, Testcontainers for integration, Playwright for E2E, fast-check for property-based, Jazzer.js for fuzzing, Stryker for mutation.
+summary: Each rung of the universal Evidence Ladder maps to a canonical TS tool — node:test, Testcontainers, Playwright, fast-check, Jazzer.js, Stryker.
 keywords: [node test, vitest, testcontainers, playwright, fast-check, jazzer, stryker, mutation testing, property based testing]
 ---
 

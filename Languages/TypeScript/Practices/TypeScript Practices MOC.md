@@ -52,6 +52,10 @@ Entry point for understanding **what** the load-bearing practices for TypeScript
 - [[Languages/TypeScript/Practices/Tooling and Quality/Reference TSConfig]] — drop-in `tsconfig.json` template.
 - [[Languages/TypeScript/Practices/Tooling and Quality/Reference ESLint Config]] — drop-in `eslint.config.js` template.
 
+### Performance (advanced / optional)
+- [[Languages/TypeScript/Practices/Performance/Allocation Hygiene]] — minimize per-iteration allocation, avoid retention in closures and caches, profile before tuning.
+- [[Languages/TypeScript/Practices/Performance/Object Shape Stability]] — V8 hidden-class optimization rewards stable object shapes on hot paths.
+
 ## Cross-cutting universal principles (always relevant)
 
 These live under [[Engineering Philosophy/Principles/Principles Index]] and apply to TypeScript code as much as anywhere:
